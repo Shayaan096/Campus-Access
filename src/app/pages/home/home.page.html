@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true" class="ion-no-border">
+    <div class="min-h-screen bg-slate-50 flex flex-col items-center p-6">
+        <div class="w-full max-w-sm flex flex-col space-y-6">
+
+            <header class="flex justify-between items-end pb-2 border-b-2 border-slate-200">
+                <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] leading-none mb-1">
+                        Campus System</p>
+                    <h1 class="text-xl font-bold text-slate-900 leading-none">Access Control</h1>
+                </div>
+                <button (click)="logout()"
+                    class="text-[10px] font-bold text-red-600 uppercase tracking-wider hover:underline">
+                    Logout
+                </button>
+            </header>
+
+            <!-- Student Card -->
+            <app-student-card [student]="studentService.student()"></app-student-card>
+
+            <!-- QR Section -->
+            <div class="py-4">
+                <app-qr-generator [student]="studentService.student()"></app-qr-generator>
+            </div>
+
+            <!-- Simulation Controls -->
+            <div class="pt-4 mt-auto">
+                <p class="text-[9px] text-slate-400 font-bold uppercase tracking-[0.1em] text-center mb-3">Gateway
+                    Simulation Tools</p>
+                <div class="grid grid-cols-3 gap-2">
+                    <button (click)="simulate('granted')"
+                        class="text-[9px] py-3 bg-white border border-slate-200 rounded-lg text-slate-500 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200 transition-all font-bold uppercase tracking-wider">Grant</button>
+                    <button (click)="simulate('denied')"
+                        class="text-[9px] py-3 bg-white border border-slate-200 rounded-lg text-slate-500 hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all font-bold uppercase tracking-wider">Deny</button>
+                    <button (click)="simulate('alert')"
+                        class="text-[9px] py-3 bg-white border border-slate-200 rounded-lg text-slate-500 hover:bg-amber-50 hover:text-amber-600 hover:border-amber-200 transition-all font-bold uppercase tracking-wider">Alert</button>
+                </div>
+            </div>
+
+            <footer class="text-center pt-6 opacity-30">
+                <p class="text-[10px] font-bold text-slate-900 uppercase tracking-[0.3em]">Institutional Use Only</p>
+            </footer>
+        </div>
+    </div>
+</ion-content>

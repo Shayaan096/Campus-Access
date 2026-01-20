@@ -1,0 +1,116 @@
+1️⃣ Registration Page
+
+Purpose: Collect student info to “activate” the app for this student.
+
+Flow / Behavior:
+
+Show a simple form with fields:
+
+Name
+
+Father’s Name
+
+Email
+
+Department
+
+User enters info → taps “Register”
+
+App saves this info locally (service or localStorage)
+
+After successful registration → navigate to Home / QR page
+
+Notes:
+
+Only one-time registration per device
+
+Simple validation: all fields filled
+
+No backend yet
+
+2️⃣ Home / QR Page
+
+Purpose: Generate QR code for campus entry.
+
+Flow / Behavior:
+
+Display student info (name, email, department) to confirm identity
+
+Show a “Generate QR” button
+
+On click → generate QR code containing:
+
+Student info (from local storage)
+
+Timestamp or current datetime
+
+Display QR code on screen
+
+Notes:
+
+QR represents “entry request”
+
+This QR can later be scanned by the gate camera / edge device
+
+Optional: show timestamp or expiry info under QR
+
+3️⃣ QR Expiry (Optional Enhancement)
+
+Purpose: Make QR code time-limited for security.
+
+Flow / Behavior:
+
+QR only valid for X minutes (e.g., 2 minutes)
+
+Show countdown timer under QR
+
+After expiry → QR disappears or button says “Regenerate QR”
+
+Notes:
+
+Helps prevent screenshot abuse
+
+Still uses local storage only
+
+4️⃣ (Optional) Result / Feedback Page
+
+Purpose: Show access result after QR scanned (simulate it for demo).
+
+Flow / Behavior:
+
+If scanned → show:
+
+✅ Access Granted
+
+❌ Access Denied
+
+🚨 Security Alert (if simulating weapon/facial mismatch)
+
+For now, can simulate by tapping a button
+
+Notes:
+
+This is purely UI feedback for the student
+
+No real scanning yet
+
+App Navigation
+
+Registration Page → Home/QR Page after first registration
+
+Optional: add simple navigation back to Home if QR expires
+
+Keep the flow linear and clean — no extra pages
+
+Extra Notes
+
+Keep UI minimal, don’t overdesign
+
+Student data is saved locally, no Firebase / backend yet
+
+QR is generated from local student info + timestamp
+
+Edge device / scanning logic is outside this app
+
+basically:
+Registration → Home → Generate QR → (optional: expiry / feedback)

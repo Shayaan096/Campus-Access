@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+/* ----------------------------------------------------------------------------
+ * CUSTOM TOAST DESIGN (Translucent, Side-Border, Professional)
+ * ---------------------------------------------------------------------------- */
+.custom-toast {
+    --background: rgba(255, 255, 255, 0.8) !important;
+    --backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --border-radius: 14px;
+    --color: #1e293b !important;
+
+    /* Positioning fixes for mobile */
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    &.toast-success {
+        --toast-accent: #059669;
+    }
+
+    &.toast-error {
+        --toast-accent: #dc2626;
+    }
+
+    &.toast-warning {
+        --toast-accent: #d97706;
+    }
+
+    &.toast-info {
+        --toast-accent: #2563eb;
+    }
+
+    &::part(container) {
+        border-left: 5px solid var(--toast-accent);
+        padding: 14px 18px;
+        background: transparent !important;
+    }
+
+    &::part(header) {
+        font-size: 13px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--toast-accent);
+        margin-bottom: 2px;
+        padding: 0;
+    }
+
+    &::part(message) {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.4;
+        color: #475569;
+        padding: 0;
+    }
+
+    &::part(button) {
+        color: #94a3b8;
+        font-size: 16px;
+        font-weight: 700;
+        opacity: 0.6;
+    }
+}

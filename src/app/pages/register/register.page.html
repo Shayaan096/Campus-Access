@@ -1,0 +1,70 @@
+<ion-content [fullscreen]="true" class="ion-no-border">
+    <div class="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6">
+        <div class="w-full max-w-sm">
+            <div class="text-center mb-8">
+                <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Student Registration</h1>
+                <p class="text-slate-500 text-sm mt-1">Provide your details to activate campus access</p>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                <form #regForm="ngForm" (ngSubmit)="onRegister(regForm.value)" class="space-y-4">
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-700 uppercase tracking-wider ml-0.5">Full
+                            Name</label>
+                        <input type="text" name="name" ngModel required placeholder="John Smith"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all text-sm">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-700 uppercase tracking-wider ml-0.5">Roll / Student
+                            ID</label>
+                        <input type="text" name="rollNo" ngModel required placeholder="e.g. 21CS042"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all text-sm">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-700 uppercase tracking-wider ml-0.5">Father's
+                            Name</label>
+                        <input type="text" name="fatherName" ngModel required placeholder="Richard Smith"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all text-sm">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-700 uppercase tracking-wider ml-0.5">Email
+                            Address</label>
+                        <input type="email" name="email" ngModel required email placeholder="jsmith@university.edu"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all text-sm">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label
+                            class="text-xs font-bold text-slate-700 uppercase tracking-wider ml-0.5">Department</label>
+                        <select name="department" ngModel required
+                            class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all text-sm appearance-none">
+                            <option value="" disabled selected>Select Department</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Business Administration">Business Administration</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" [disabled]="!regForm.valid || isLoading()"
+                        class="w-full mt-6 bg-blue-600 disabled:bg-slate-300 text-white font-semibold py-3.5 rounded-lg shadow-sm hover:bg-blue-700 transition-colors active:scale-[0.98] flex items-center justify-center space-x-2 text-sm">
+                        @if (isLoading()) {
+                        <ion-spinner name="crescent" color="light" class="w-5 h-5"></ion-spinner>
+                        } @else {
+                        <span>Register Account</span>
+                        }
+                    </button>
+                </form>
+            </div>
+
+            <div class="mt-8 text-center">
+                <p class="text-slate-400 text-[11px] font-medium uppercase tracking-[0.1em]">
+                    OFFICIAL CAMPUS ACCESS SYSTEM
+                </p>
+            </div>
+        </div>
+    </div>
+</ion-content>
