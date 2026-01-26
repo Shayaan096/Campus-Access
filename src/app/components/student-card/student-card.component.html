@@ -13,7 +13,7 @@
             <div class="flex items-center space-x-2">
                 <span
                     class="inline-block px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-wider rounded-md">
-                    {{ student()?.deptId || student()?.department }}
+                    {{ student()?.department || student()?.deptId }}
                 </span>
             </div>
         </div>
@@ -49,7 +49,8 @@
             <div
                 class="bg-gradient-to-r from-slate-50 to-blue-50/50 px-4 py-3 rounded-xl border border-slate-200/60 flex justify-between items-center">
                 <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Student ID (Roll)</span>
-                <span class="text-base text-slate-900 font-mono font-bold">{{ student()?.rollNo }}</span>
+                <span class="text-base text-slate-900 font-mono font-bold">{{ student()?.rollNo || student()?.id
+                    }}</span>
             </div>
         </div>
     </div>

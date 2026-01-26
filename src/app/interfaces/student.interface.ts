@@ -13,7 +13,7 @@ export interface Student {
     id?: string;
     firebaseKey?: string;
     name: string;
-    rollNo: string;
+    rollNo?: string;
     fatherName: string;
     email: string;
     phone: string;
