@@ -1,29 +1,38 @@
 <ion-content [fullscreen]="true" class="ion-no-border">
-    <div class="min-h-screen bg-slate-50 flex flex-col items-center p-6">
-        <div class="w-full max-w-sm flex flex-col space-y-6">
+    <div class="bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 flex flex-col items-center p-4 md:p-6 pb-8">
+        <div class="w-full md:max-w-md flex flex-col space-y-5">
 
-            <header class="flex justify-between items-end pb-2 border-b-2 border-slate-200">
-                <div>
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] leading-none mb-1">
-                        Campus System</p>
-                    <h1 class="text-xl font-bold text-slate-900 leading-none">Access Control</h1>
+            <!-- Enhanced Header -->
+            <header
+                class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 shadow-lg">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full -ml-12 -mb-12"></div>
+
+                <div class="relative flex justify-between items-start">
+                    <div>
+                        <p class="text-[10px] font-bold text-blue-100 uppercase tracking-[0.15em] mb-2">
+                            Campus System
+                        </p>
+                        <h1 class="text-2xl font-bold text-white leading-tight mb-1">Access Control</h1>
+                        <p class="text-blue-100 text-xs font-medium">Student Dashboard</p>
+                    </div>
+                    <button (click)="logout()"
+                        class="px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all border border-white/30">
+                        Logout
+                    </button>
                 </div>
-                <button (click)="logout()"
-                    class="text-[10px] font-bold text-red-600 uppercase tracking-wider hover:underline">
-                    Logout
-                </button>
             </header>
 
             <!-- Student Card -->
             <app-student-card [student]="studentService.student()"></app-student-card>
 
             <!-- QR Section -->
-            <div class="py-4">
+            <div class="py-2">
                 <app-qr-generator [student]="studentService.student()"></app-qr-generator>
             </div>
 
             <!-- Simulation Controls -->
-            <div class="pt-4 mt-auto">
+            <div class="pt-4">
                 <p class="text-[9px] text-slate-400 font-bold uppercase tracking-[0.1em] text-center mb-3">Gateway
                     Simulation Tools</p>
                 <div class="grid grid-cols-3 gap-2">

@@ -11,8 +11,8 @@ import { ToastService } from '../../services/toast.service';
   template: `
     <div class="flex flex-col items-center justify-center space-y-6">
       @if (qrCodeUrl()) {
-        <div class="relative p-3 bg-white border-2 border-slate-100 rounded-2xl shadow-md">
-          <img [src]="qrCodeUrl()" alt="Access QR Code" class="w-56 h-56" />
+        <div class="relative p-3 bg-white border-2 border-slate-100 rounded-2xl shadow-md w-full max-w-[280px]">
+          <img [src]="qrCodeUrl()" alt="Access QR Code" class="w-full h-auto aspect-square object-contain" />
           
           @if (isExpired()) {
             <div class="absolute inset-0 bg-white/90 backdrop-blur-[2px] rounded-2xl flex flex-col items-center justify-center p-4 text-center">
@@ -74,18 +74,24 @@ export class QrGeneratorComponent implements OnDestroy {
       return;
     }
 
-    const data = {
-      student: this.student(),
-      timestamp: Date.now()
+    const studentData = this.student()!;
+
+    // Construct the lightweight payload for attendance
+    const qrPayload = {
+      type: 'ATTENDANCE_MARKER',
+      studentId: studentData.firebaseKey, // Ensure this exists in Student interface or is handled
+      rollNo: studentData.rollNo,
+      timestamp: Date.now(),
+      apiEndpoint: 'https://campusaccessbackend-default-rtdb.asia-southeast1.firebasedatabase.app/attendance.json'
     };
 
     console.log('[QrGenerator] QR Payload Data:', {
-      ...data,
-      readable_timestamp: new Date(data.timestamp).toLocaleString()
+      ...qrPayload,
+      readable_timestamp: new Date(qrPayload.timestamp).toLocaleString()
     });
 
     try {
-      const url = await QRCode.toDataURL(JSON.stringify(data), {
+      const url = await QRCode.toDataURL(JSON.stringify(qrPayload), {
         margin: 1,
         width: 400,
         color: {
