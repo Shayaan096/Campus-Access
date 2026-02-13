@@ -126,12 +126,14 @@ export class AuthService {
                     const studentData = matchedStudent as any;
                     const studentDeptId = studentData.deptId || studentData.departmentId;
                     const studentSecId = studentData.secId || studentData.sectionId;
+                    const rollNo = studentData.rollNo || studentData.id;
 
                     const departmentName = depts && depts[studentDeptId] ? depts[studentDeptId].name : undefined;
                     const sectionName = secs && secs[studentSecId] ? secs[studentSecId].name : undefined;
 
                     const enrichedStudent: Student = {
                         ...matchedStudent,
+                        rollNo: rollNo, // Ensure rollNo is populated
                         deptId: studentDeptId,
                         secId: studentSecId,
                         department: departmentName,

@@ -79,8 +79,8 @@ export class QrGeneratorComponent implements OnDestroy {
     // Construct the lightweight payload for attendance
     const qrPayload = {
       type: 'ATTENDANCE_MARKER',
-      studentId: studentData.firebaseKey, // Ensure this exists in Student interface or is handled
-      rollNo: studentData.rollNo,
+      studentId: studentData.rollNo || studentData.id || studentData.firebaseKey,
+      rollNo: studentData.rollNo || studentData.id,
       timestamp: Date.now(),
       apiEndpoint: 'https://campusaccessbackend-default-rtdb.asia-southeast1.firebasedatabase.app/attendance.json'
     };
